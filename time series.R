@@ -4,8 +4,8 @@ install.packages("stringr")
 install.packages("fpp2")
 
 Xxt <- article_pageviews(article = "Manchester_United", end = "2019120100")$views 
-#View(article_pageviews(article = "Manchester_United", end = "2019120100")) 
-#View(Xxt)
+View(article_pageviews(article = "Manchester_United", end = "2019120100")) 
+View(Xxt)
 mol <- ts(Xxt)
 plot(ts(Xxt))
 check(mol,simple = TRUE)
@@ -34,6 +34,7 @@ client_function_manu <- function(date = Sys.Date()) {
   # Return forecast object 
   return(output)} 
 client_function_manu(20191206)
+client_function_manu(20210115)
 
 
 
@@ -46,6 +47,7 @@ corr_analysis(Xt)
 #evaluate(list(AR(1),ARMA(2,1),ARMA(3,3)), Xt, criterion = "MAPE", start = 0.5) #model_copper_ar1 = estimate(AR(1), Xt)
 #check(model_copper_ar1)
 model1 <- estimate(AR(1),Xt)
+
 check(model1)
 model2 <- estimate(ARMA(2,1),Xt)
 check(model2)
@@ -63,9 +65,9 @@ client_function_liverpool <- function(date = Sys.Date()) { # Load required libra
   # Create output list
   output <- list("point_forecast" = as.vector(forecast$pred), "forecast_pred.int" =cbind(as.vector(forecast$CI0.95[,1]), as.vector(forecast$CI0.95[,2])))
   # Return forecast object
-  return(output) 
-  }
+  return(output) }
 client_function_liverpool(20191206)
+client_function_liverpool(20210115)
 
 
 Xt <- article_pageviews(article = "Real_Madrid", end = "2019120100")$views mol <- ts(Xt)
@@ -93,7 +95,7 @@ client_function_rm <- function(date = Sys.Date()) { # Load required libraries
   forecast <- predict(estimate(ARMA(4,4), Xt), n.ahead=7)
   # Create output list
   output <- list("point_forecast" = as.vector(forecast$pred), "forecast_pred.int" =cbind(as.vector(forecast$CI0.95[,1]), as.vector(forecast$CI0.95[,2])))
-  # Return forecast object
-  return(output)
+  # Return forecast object return(output)
 }
- client_function_rm(20191206)
+client_function_rm(20191206)
+client_function_rm(20210115
