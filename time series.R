@@ -3,9 +3,13 @@ install.packages("simts")
 install.packages("stringr")
 install.packages("fpp2")
 
+library(pageviews)
+library(simts)
+library(stringr)
+
 Xxt <- article_pageviews(article = "Manchester_United", end = "2019120100")$views 
-View(article_pageviews(article = "Manchester_United", end = "2019120100")) 
-View(Xxt)
+#View(article_pageviews(article = "Manchester_United", end = "2019120100")) 
+#View(Xxt)
 mol <- ts(Xxt)
 plot(ts(Xxt))
 check(mol,simple = TRUE)
@@ -47,7 +51,6 @@ corr_analysis(Xt)
 #evaluate(list(AR(1),ARMA(2,1),ARMA(3,3)), Xt, criterion = "MAPE", start = 0.5) #model_copper_ar1 = estimate(AR(1), Xt)
 #check(model_copper_ar1)
 model1 <- estimate(AR(1),Xt)
-
 check(model1)
 model2 <- estimate(ARMA(2,1),Xt)
 check(model2)
@@ -70,8 +73,9 @@ client_function_liverpool(20191206)
 client_function_liverpool(20210115)
 
 
-Xt <- article_pageviews(article = "Real_Madrid", end = "2019120100")$views mol <- ts(Xt)
-View(Xt)
+Xt <- article_pageviews(article = "Real_Madrid", end = "2019120100")$views 
+mol <- ts(Xt)
+#View(Xt)
 plot(ts(Xt))
 check(mol,simple = TRUE)
 corr_analysis(Xt)
@@ -98,4 +102,4 @@ client_function_rm <- function(date = Sys.Date()) { # Load required libraries
   # Return forecast object return(output)
 }
 client_function_rm(20191206)
-client_function_rm(20210115
+client_function_rm(20210115)
